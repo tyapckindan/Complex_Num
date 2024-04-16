@@ -1,12 +1,18 @@
 ﻿class Complex
 {
     public double r, i;
-    public string sign;
+    public string sign; 
 
-    public string Sum(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат сложения: {a1 + a2} {b1 + b2}i");
-    public string Subtraction(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат вычитания: {a1 - a2} {b1 - b2}i");
-    public string Multiply(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат умножения: {a1 * a2 - b1 * b2} {b1 * a2 + a1 * b2}i");
-    public string Division(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат деления: {a1 * a2 + b1 * b2/(a2 * a2 + b2 * b2)} {b1 * a2 - a1 * b2/(a2 * a2 + b2 * b2)}i");
+    public string Sum(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат сложения: {a1 + a2} {Sign(b1 + b2)} {(b1 + b2).ToString().Replace("-", "")}i");
+    public string Subtraction(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат вычитания: {a1 - a2} {Sign(b1 - b2)} {(b1 - b2).ToString().Replace("-", "")}i");
+    public string Multiply(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат умножения: {a1 * a2 - b1 * b2} {Sign(b1 * a2 + a1 * b2)} {(b1 * a2 + a1 * b2).ToString().Replace("-", "")}i");
+    public string Division(double a1, double b1, double a2, double b2) => Convert.ToString($"Результат деления: {a1 * a2 + b1 * b2/(a2 * a2 + b2 * b2)} {Sign(b1 * a2 - a1 * b2 / (a2 * a2 + b2 * b2))} {(b1 * a2 - a1 * b2/(a2 * a2 + b2 * b2)).ToString().Replace("-", "")}i");
+    public string Sign(double b)
+    {
+        if (b > 0)
+            return "+";
+        return "-";
+    }
 }
 class Program
 {
@@ -34,6 +40,5 @@ class Program
             $"\nВычитание: {c1.Subtraction(c1.r, c1.i, c2.r, c2.i)}" +
             $"\nУмножение: {c1.Multiply(c1.r, c1.i, c2.r, c2.i)}" +
             $"\nДеление: {c1.Division(c1.r, c1.i, c2.r, c2.i)}");
-
     }
 }
