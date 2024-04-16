@@ -24,7 +24,7 @@
             c1.sign = str.Split(" ")[1];
             c1.i = Convert.ToDouble(c1.sign + Convert.ToDouble(str.Replace("i", "").Split(" ")[2]));
 
-            Console.WriteLine("Введите второе комплексное число в формате {a bi}");
+            Console.WriteLine("Введите второе комплексное число в формате {a + bi}");
             str = Console.ReadLine();
 
             c2.r = Convert.ToDouble(str.Split(" ")[0]);
